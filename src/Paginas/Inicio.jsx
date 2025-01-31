@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "../Css/Inicio.css";
 
-import {Encabezado} from "../Componentes/Encabezado";
-import {PiePaguina} from "../Componentes/PiePaguina";
+import { Encabezado } from "../Componentes/Encabezado";
+import { PiePaguina } from "../Componentes/PiePaguina";
 
 const Inicio = () => {
   return (
@@ -15,8 +16,8 @@ const Inicio = () => {
         <h1>Bienvenid@ a Demo Streaming</h1>
         <p>Eliga una categoría para disfrutar</p>
         <div className="cards-container">
-          <a href="/series" className="card">Series</a>
-          <a href="/peliculas" className="card">Películas</a>
+          <Link to="/Series" className="card">Series</Link>
+          <Link to="/Peliculas" className="card">Peliculas</Link>
         </div>
       </main>
 
