@@ -1,0 +1,57 @@
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #000;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+  
+  .logo {
+    color: red;
+    font-size: 24px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .logo:hover {
+    color: white;
+  }
+  
+  .nav-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .btn-login,
+  .btn-trial {
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+  }
+  
+  .btn-login {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+  }
+  
+  .btn-login:hover {
+    border-color: red;
+  }
+  
+  .btn-trial {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .btn-trial:hover {
+    background-color: white;
+    color: red;
+  }
+  
