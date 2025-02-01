@@ -11,7 +11,6 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    alert(`Iniciando sesión con:\nCorreo: ${email}\nContraseña: ${password}`);
   };
 
   return (

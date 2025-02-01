@@ -13,6 +13,8 @@ const Peliculas = () => {
 
     const [pagina, setPagina] = useState(1);
     const [limite, setLimite] = useState(20);
+    const [popupInfo, setPopupInfo] = useState(null);
+    const [filtroAnio, setFiltroAnio] = useState("");
 
     useEffect(() => {
         axios.get("./sample.json")
@@ -31,9 +33,20 @@ const Peliculas = () => {
             });
     }, []);
 
+    const abrirPopup = (pelicula) => {
+        setPopupInfo(pelicula);
+    };
+
+    const cerrarPopup = () => {
+        setPopupInfo(null);
+    };
+
+    const peliculasFiltradas = peliculas.filter((pelicula) =>
+        filtroAnio === "" || pelicula.releaseYear >= parseInt(filtroAnio)
+    );
     const startIndex = (pagina - 1) * limite;
     const endIndex = startIndex + limite;
-    const peliculasPaginadas = peliculas.slice(startIndex, endIndex);
+    const peliculasPaginadas = peliculasFiltradas.slice(startIndex, endIndex);
 
     return (
         <div className="peliculas-container">
@@ -41,6 +54,13 @@ const Peliculas = () => {
 
             <main className="main-content">
                 <h1>Películas populares</h1>
+
+                <input className="input-peliculas"
+                    type="number"
+                    placeholder="Filtrar por año..."
+                    value={filtroAnio}
+                    onChange={(e) => setFiltroAnio(e.target.value)}
+                />
 
                 {loading && <p>Cargando espere un momento...</p>}
                 {error && <p>{error}</p>}
@@ -57,10 +77,24 @@ const Peliculas = () => {
                     {peliculasPaginadas.map((pelicula) => (
                         <div className="cardpeliculas" key={pelicula.title}>
                             <img src={pelicula.images?.["Poster Art"]?.url} alt={pelicula.title} />
-                            <p>{pelicula.title}</p>
+                            <a href="" className="pelicula-link" onClick={(e) => { e.preventDefault(); abrirPopup(pelicula); }}>
+                                {pelicula.title}
+                            </a>
                         </div>
                     ))}
                 </div>
+
+                {popupInfo && (
+                    <div className="popupmovie">
+                        <div className="popup-contentmovie">
+                            <button className="close-btnmovie" onClick={cerrarPopup}>X</button>
+                            <h2>{popupInfo.title}</h2>
+                            <img src={popupInfo.images?.["Poster Art"]?.url} alt={popupInfo.title} />
+                            <p>{popupInfo.description}</p>
+                            <p><strong>Año:</strong> {popupInfo.releaseYear}</p>
+                        </div>
+                    </div>
+                )}
 
                 <div className="paginationpeliculas">
                     <button onClick={() => setPagina(pagina - 1)} disabled={pagina === 1}>
