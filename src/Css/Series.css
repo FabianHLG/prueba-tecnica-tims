@@ -16,7 +16,6 @@
   .cardseries {
     width: 200px;
     height: 350px;
-    background-color: gray;
     border-radius: 10px;
     overflow: hidden;
     display: flex;
@@ -50,3 +49,57 @@
     font-size: 40px;
 }
   
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+select {
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+}
+
+.paginationseries {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  margin-bottom: 5%;
+}
+
+.paginationseries button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.paginationseries button:hover {
+  background-color: white;
+  color: red;
+}
+
+.paginationseries button:disabled {
+  background-color: #444;
+  color: white;
+  cursor: not-allowed;
+}
+
+.paginationseries span {
+  font-size: 18px;
+  font-weight: bold;
+}

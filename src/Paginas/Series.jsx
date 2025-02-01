@@ -11,6 +11,9 @@ const Series = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const [pagina, setPagina] = useState(1);
+    const [limite, setLimite] = useState(20);
+
     useEffect(() => {
         axios.get("./sample.json")
             .then((response) => {
@@ -19,7 +22,7 @@ const Series = () => {
                     (entry) => entry.programType === "series" && entry.releaseYear >= 2010
                 );
                 const ordenSeries = filteredSeries.sort((a, b) => a.title.localeCompare(b.title));
-                setSeries(ordenSeries.slice(0, 20));
+                setSeries(ordenSeries);
                 setLoading(false);
             })
             .catch((err) => {
@@ -28,32 +31,54 @@ const Series = () => {
             });
     }, []);
 
-    return (
-        
-        <div className="series-container">
+    const startIndex = (pagina - 1) * limite;
+    const endIndex = startIndex + limite;
+    const seriesPaginadas = series.slice(startIndex, endIndex);
 
+    return (
+        <div className="series-container">
             <Encabezado />
 
             <main className="main-content">
                 <h1>Series populares</h1>
+
                 {loading && <p>Cargando espere un momento...</p>}
                 {error && <p>{error}</p>}
+
+                <label>Mostrar:
+                    <select value={limite} onChange={(e) => setLimite(Number(e.target.value))}>
+                        <option value={5}>5</option>
+                        <option value={10}>10</option>
+                        <option value={20}>20</option>
+                    </select>
+                </label>
+
                 <div className="cardseries-container">
-                    {series.map((serie) => (
+                    {seriesPaginadas.map((serie) => (
                         <div className="cardseries" key={serie.title}>
                             <img src={serie.images?.["Poster Art"]?.url} alt={serie.title} />
                             <p>{serie.title}</p>
                         </div>
                     ))}
                 </div>
+
+                <div className="paginationseries">
+                    <button onClick={() => setPagina(pagina - 1)} disabled={pagina === 1}>
+                        Anterior
+                    </button>
+                    <span>Página {pagina}</span>
+                    <button onClick={() => setPagina(pagina + 1)} disabled={endIndex >= series.length}>
+                        Siguiente
+                    </button>
+                </div>
             </main>
 
             <PiePaguina />
-            
         </div>
     );
 };
 
 export default Series;
+
 
 

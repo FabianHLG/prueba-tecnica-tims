@@ -41,7 +41,7 @@ body {
 }
 
 .card {
-  background-color: gray;
+  background-color: rgba(128, 128, 128, 0.308);
   color: white;
   text-decoration: none;
   font-size: 20px;
@@ -56,4 +56,9 @@ body {
   color: red;
 }
 
-
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+}
