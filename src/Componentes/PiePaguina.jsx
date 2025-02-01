@@ -1,13 +1,23 @@
 import React from 'react'
+
+import { Link } from "react-router-dom";
 import "../Css/PiePaguina.css";
 
 export const PiePaguina = () => {
   return (
     <footer className="footer">
-        <a href="/">Inicio</a>
-        <a href="">Privacidad y políticas</a>
-        <a href="">Ayuda</a>
-        <a href="">Términos y condiciones</a>
+      <Link to="/">
+        <a >Inicio</a>
+      </Link>
+      <Link to="/">
+        <a >Privacidad y políticas</a>
+      </Link>
+      <Link to="/">
+        <a >Ayuda</a>
+      </Link>
+      <Link to="/">
+        <a >Términos y condiciones</a>
+      </Link>
       </footer>
   )
 }
