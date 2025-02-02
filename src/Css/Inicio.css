@@ -23,10 +23,6 @@ body {
   width: 100%;
 }
 
-.main-content h1 {
-  font-size: 40px;
-}
-
 .main-content p {
   font-size: 20px;
   margin-top: 5%;
@@ -38,11 +34,6 @@ body {
   gap: 20px;
   margin-top: 30px;
   width: 100%;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
 }
 
 .card {
@@ -59,11 +50,4 @@ body {
 .card:hover {
   transform: scale(1.05);
   color: red;
-}
-
-@media (max-width: 600px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-  }
 }

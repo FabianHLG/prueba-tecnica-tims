@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { TextField } from "@mui/material";
 
 import { useDispatch } from "react-redux";
 import { addUser } from "../Redux/userSlice";
@@ -32,22 +33,28 @@ const Login = () => {
       <main className="login-content">
         <h1>Iniciar Sesión</h1>
         <form onSubmit={handleLogin} className="login-form">
-          <input
-            placeholder="Nombre completo"
+          <TextField
+            label="Nombre Completo"
+            variant="standard"
+            color="error"
             value={name}
             onChange={(e) => setname(e.target.value)}
             required
           />
-          <input
+          <TextField
+            label="Correo electrónico"
             type="email"
-            placeholder="Correo electrónico"
+            variant="standard"
+            color="error"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <input
+          <TextField
+            label="Contraseña"
             type="password"
-            placeholder="Contraseña"
+            variant="standard"
+            color="error"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
